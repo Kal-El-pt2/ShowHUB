@@ -12,6 +12,7 @@ export default function AdminHome() {
   const [deletemovieForm, setdeletemovieForm] = useState(false);
   const [deletetheatreForm, setdeletetheatreForm] = useState(false);
   const [deleteshowForm, setdeleteshowForm] = useState(false);
+  const [deletescreenForm, setdeletescreenForm] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -32,6 +33,7 @@ export default function AdminHome() {
     setdeletemovieForm(option === 'Delete Movie');
     setdeletetheatreForm(option === 'Delete Theatre');
     setdeleteshowForm(option === 'Delete Show');
+    setdeletescreenForm(option === 'Delete Screen');
   };
 
   const handleInputChange = (e) => {
@@ -83,7 +85,7 @@ export default function AdminHome() {
       const response = await axiosInstance.post('/deletetheatre', formData);
       console.log(response.data);
     }catch(error){
-      console.error('Error adding show:', error);
+      console.error('Error adding theatre:', error);
     }
   }
   const handledeleteshow = async()=>{
@@ -92,6 +94,14 @@ export default function AdminHome() {
       console.log(response.data);
     }catch(error){
       console.error('Error adding show:', error);
+    }
+  }
+  const handledeletescreen = async()=>{
+    try{
+      const response = await axiosInstance.post('/deletescreen', formData);
+      console.log(response.data);
+    }catch(error){
+      console.error('Error adding screen:', error);
     }
   }
 
@@ -247,6 +257,17 @@ export default function AdminHome() {
               <input type="text" name="title" value={formData.title} onChange={handleInputChange} style={{ padding: '8px' }} />
             </label>
             <Button onClick={handledeleteshow} color="#fdc500" style={{ alignSelf: 'flex-start' }}>
+              Delete Movie
+            </Button>
+          </form>
+        )}
+        {deletescreenForm && (
+          <form style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px', gap: '10px' }}>
+            <label style={{ display: 'flex', flexDirection: 'column' }}>
+              Screen ID:
+              <input type="text" name="title" value={formData.title} onChange={handleInputChange} style={{ padding: '8px' }} />
+            </label>
+            <Button onClick={handledeletescreen} color="#fdc500" style={{ alignSelf: 'flex-start' }}>
               Delete Movie
             </Button>
           </form>

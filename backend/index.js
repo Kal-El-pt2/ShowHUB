@@ -46,6 +46,9 @@ app.use("/", cityRoutes);
 // Use show routes
 app.use("/", showRoutes);
 
+// Use screen routes
+app.use("/", screenRoutes);
+
 // Use seat routes
 app.use("/", seatRoutes);
 
