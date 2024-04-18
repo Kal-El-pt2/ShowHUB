@@ -6,17 +6,8 @@ export default function BookingConfirmed() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const confirmBooking = async () => {
-      // Your code for confirming the booking...
-
-      // Once booking is confirmed, show alert
-      alert('Your booking has been confirmed and details have been sent to your registered email');
-      
-      // Redirect to the movies page
-      navigate('/home');
-    };
-
-    confirmBooking();
+    alert('Your booking has been confirmed and details have been sent to your registered email');
+    navigate('/home');
   }, [navigate]);
 
   return (

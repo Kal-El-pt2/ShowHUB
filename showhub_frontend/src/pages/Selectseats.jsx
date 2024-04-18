@@ -5,7 +5,7 @@ import { Button, Modal, Group, Text } from '@mantine/core';
 import axiosInstance from '../Auth/axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Import the useAuth hook
-import './SelectedSeats.css';
+import './selectedseats.css';
 
 function SelectSeats() {
   const { showId, screenId, movietitle, price } = useParams();

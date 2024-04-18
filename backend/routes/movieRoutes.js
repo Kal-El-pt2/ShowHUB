@@ -85,4 +85,26 @@ router.post("/addmovie", verifyToken, (req, res) => {
   );
 });
 
+
+router.post("/deletemovie", verifyToken, (req, res) => {
+  const { movieName } = req.body;
+
+  // Ensure movieID is provided
+  if (!movieName) {
+    return res.status(400).json({ error: "Movie Name is required." });
+  }
+
+  const deleteMovieQuery = "DELETE FROM movies WHERE title = ?";
+  db.query(deleteMovieQuery, [movieName], (err, result) => {
+    if (err) {
+      console.error("Error deleting movie:", err);
+      return res.status(500).json({ error: "An error occurred while deleting the movie." });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Movie not found." });
+    }
+    res.json({ message: "Movie deleted successfully." });
+  });
+});
+
 module.exports = router;
