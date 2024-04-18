@@ -5,6 +5,7 @@ import { Button, Modal, Group, Text } from '@mantine/core';
 import axiosInstance from '../Auth/axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Import the useAuth hook
+import './SelectedSeats.css';
 
 function SelectSeats() {
   const { showId, screenId, movietitle, price } = useParams();
@@ -98,7 +99,7 @@ function SelectSeats() {
     });
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='container' style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
           <span style={{ fontWeight: 'bold' }}>Screen</span>
         </div>
@@ -113,13 +114,14 @@ function SelectSeats() {
 
   return (
     <div style={{ display: 'flex' }}>
+      {/* Navbar Component */}
       <Navbar />
-      <div>
-        <h2>Select Seats for Show {movietitle} on Screen {screenId}</h2>
+      <div className='tbc'>
+        <h2 className='text heading'>Select Seats for Show {movietitle} on Screen {screenId}</h2>
         {renderSeats()}
-        <p>Selected Seats: {selectedSeats.join(', ')}</p>
+        <p className='text para'>Selected Seats: {selectedSeats.join(', ')}</p>
         <div style={{ marginTop: '20px' }}>
-          <h3>Legend</h3>
+          <h3 className='text smolHeading'>Legend</h3>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div
               style={{

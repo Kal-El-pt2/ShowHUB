@@ -37,7 +37,7 @@ router.post("/createbooking", verifyToken, (req, res) => {
 
     // Insert booking into database
     const insertBookingQuery =
-      "INSERT INTO bookings (bookingId, showId, noofseats, userId, created, totalPrice, movieName) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO booking (bookingId, showId, noofseats, userId, created, totalPrice, movieName) VALUES (?, ?, ?, ?, ?, ?, ?)";
     db.query(
       insertBookingQuery,
       [
